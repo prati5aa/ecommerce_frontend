@@ -6,7 +6,7 @@ function latest({name,price,img}) {
   return (
    
       <div className='flex flex-col gap-[4px]   w-[280px]   hover:shadow-xl group relative'>
-        <div className="hidden  absolute bottom-[42px] left-[14px] gap-[1px] flex-col group-hover:block group-hover:flex">
+        <div className="hidden  absolute bottom-[42px] left-[14px] gap-[1px] flex-col  group-hover:flex">
                   <div className="w-[30px] h-[30px] flex justify-center items-center rounded-full  text-[16px] text-[#1389FF] hover:text-[#2F1AC4]  hover:bg-[#EEEFFB90]">
                     <CiShoppingCart  />
                   </div>

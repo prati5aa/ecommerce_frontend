@@ -7,7 +7,7 @@ function Cards({ itemName, code, price, img }) {
   return (
     <div> 
       <div className="group w-[200px]  bg-white  overflow-hidden transition-transform duration-300 hover:-translate-y-3  hover:shadow-xl hover:bg-[#2F1AC4]  hover:text-white relative">
-        <div className="hidden  absolute top-[15px] left-[14px]  flex gap-[5px] group-hover:block group-hover:flex">
+        <div className="hidden  absolute top-[15px] left-[14px]   gap-[5px]  group-hover:flex">
           <div className="w-[30px] h-[30px] flex justify-center items-center rounded-full text-[19px] text-[#1389FF] hover:text-[#2F1AC4]  hover:bg-[#EEEFFB90]">
             <CiShoppingCart />
           </div>
@@ -20,7 +20,7 @@ function Cards({ itemName, code, price, img }) {
         </div>
         <div className="bg-[#F6F7FB] flex justify-center items-center h-[180px] w-full ">
           <img className="w-[100px] h-[100px] transition-transform duration-300 group-hover:scale-90   " src={img} />
-          <div className="absolute bottom-34 flex hidden bg-[#08D15F] w-fit text-[12px] text-white rounded-[2px] p-2 group-hover:block">
+          <div className="absolute bottom-34 hidden bg-[#08D15F] w-fit text-[12px] text-white rounded-[2px] p-2 group-hover:block">
             View Details
           </div>
         </div>
