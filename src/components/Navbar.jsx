@@ -11,7 +11,7 @@ function navbar() {
           <ol className="flex gap-5 text-sm font-[500] ">
             <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Home</li>
             <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Page</li>
-            <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Products</li>
+            <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]"><a href="/product">Products</a></li>
             <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Blog</li>
             <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Shop</li>
             <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Contact</li>
