@@ -8,13 +8,13 @@ function navbar() {
       <div className="flex justify-between items-center w-[80%] h-[40px]">
         <div className="flex items-center gap-22">
           <p className=" flex items-center font-[600] text-[#0D0E43] text-[34px]">Hekto</p>
-          <ol className="flex gap-5 text-sm font-[500] ">
-            <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Home</li>
-            <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Page</li>
-            <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]"><a href="/product">Products</a></li>
-            <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Blog</li>
-            <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Shop</li>
-            <li className=" text-[#0D0E43] text-[16px] font-[400] active:text-[#FB2E86]">Contact</li>
+          <ol className="flex text-[#0D0E43] gap-5 text-sm font-[500] ">
+            <li className=" text-[16px] font-[400] active:text-[#FB2E86]">Home</li>
+            <li className=" text-[16px] font-[400] active:text-[#FB2E86]">Page</li>
+            <li className=" text-[16px] font-[400] active:text-[#FB2E86]"><a href="/product">Products</a></li>
+            <li className=" text-[16px] font-[400] active:text-[#FB2E86]">Blog</li>
+            <li className=" text-[16px] font-[400] active:text-[#FB2E86]">Shop</li>
+            <li className=" text-[16px] font-[400] active:text-[#FB2E86]">Contact</li>
           </ol>
         </div>
         <div className="flex items-center h-[40px] w-[317px]">

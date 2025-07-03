@@ -5,6 +5,7 @@ import ShowPro from '../components/ShowPro.jsx'
 import ProDesc from '../components/ProDesc.jsx'
 import Footer from '../components/footer.jsx'
 import HeroNav from '../components/Resuable/HeroNav.jsx'
+import Breadcrumbs from '../components/Resuable/Breadcrumb.jsx'
 const ProductDetail = () => {
     const pageName = "Product Details";
   return (
@@ -14,6 +15,7 @@ const ProductDetail = () => {
       <Nav/>
 
       <HeroNav  name={pageName}/>
+        
 
       <ShowPro/>
         <ProDesc/>

@@ -19,6 +19,7 @@ function App() {
      <Route path="/home" element={<Home/>} />
      <Route path="/product" element={<ProductDetail/>} />
      <Route path="/shop" element={<ShopGrid/>} />
+     <Route path="products/product-details/:id" element={<ProductDetail />} />
     </Routes>
 
     
