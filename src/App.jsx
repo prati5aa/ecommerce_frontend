@@ -1,30 +1,15 @@
-import { useState } from 'react'
-import Login from './pages/login.jsx'
-import { Route, Routes } from 'react-router-dom'
-import Signup from './pages/Signup.jsx'
-import Home from './pages/Home.jsx'
-import ProductDetail from './pages/ProductDetail.jsx'
-import ShopGrid from './pages/ShopGrid.jsx'
+
+import { Provider } from "react-redux";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./router/Router";
+import { store } from "./redux/Store";
 
 function App() {
-
-
   return (
-    <>
-    
-
-    <Routes>
-    <Route path="/" element={<Login/>} />
-     <Route path="/signup" element={<Signup/>} />
-     <Route path="/home" element={<Home/>} />
-     <Route path="/product" element={<ProductDetail/>} />
-     <Route path="/shop" element={<ShopGrid/>} />
-     <Route path="products/product-details/:id" element={<ProductDetail />} />
-    </Routes>
-
-    
-    </>
-  )
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  );
 }
 
-export default App
+export default App;
