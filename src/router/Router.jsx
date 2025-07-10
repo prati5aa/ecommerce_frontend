@@ -13,23 +13,23 @@ import Signup from "../pages/Signup";
 export const router = createBrowserRouter([
   {
     path: "/",
-    element:<Protected><Layout /></Protected> ,
+    element:<Protected><Layout /></Protected>,
     children: [
       {
         index: true,
         element: (
-          <Protected>
+          
             <Home />
-          </Protected>
+         
         ),
       },
       {
         path:"products",
         // index: true,
         element: (
-          <Protected>
+          
             <Products />
-          </Protected>
+          
         ),
       },
 
@@ -37,25 +37,25 @@ export const router = createBrowserRouter([
       {
         path: "dashboard",
         element: (
-          <Protected>
+        
             <Shopping />
-          </Protected>
+          
         ),
       },
       {
         path: "shop",
         element: (
-          <Protected>
+        
             <Shopping />
-          </Protected>
+          
         ),
       },
       {
         path: "product/:id",
         element: (
-          <Protected>
+          
             <ProductDetails/>
-          </Protected>
+          
         ),
       },
     ],

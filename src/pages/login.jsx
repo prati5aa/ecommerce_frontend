@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -8,9 +8,43 @@ import {
   loginSuccess,
   setUser,
 } from "../features/user/authSlice";
+import { toast } from "react-toastify";
 // import { Counter } from './components/Counter'
 
+
+
+// Inside your component
+
+
+
+
 const Login = () => {
+
+
+  const [products, setProducts] = useState([]); 
+
+const [loading, setLoading] = useState(true);
+
+// useEffect(() => {
+//   fetch('https://ecom-backend-4heh.onrender.com/api/v1/product')
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log("Fetched products:", data);
+//       setProducts(data.productName); // or just setProducts(data) depending on your API shape
+//       setLoading(false);
+//     })
+//     .catch(err => {
+//       console.error("Error fetching products:", err);
+//       setLoading(false);
+//     });
+// }, []);
+
+
+
+
+
+
+
   const dispatch = useDispatch();
 
   const { isLoading, error } = useSelector((state) => state.auth);
@@ -28,7 +62,7 @@ const Login = () => {
     console.log("started");
 
     try {
-      const response = await fetch('https://ecom-backend-4heh.onrender.com//api/v1/user/login', {
+      const response = await fetch('https://ecom-backend-4heh.onrender.com/api/v1/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,10 +71,14 @@ const Login = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Login failed');
+        const errmsg= await response.json();
+        throw new Error(errmsg.message || "Login failed");
+
       }
 
       const data = await response.json();
+      console.log("Login successful:", data);
+
 
 
       // store token in local storage
@@ -48,13 +86,16 @@ const Login = () => {
 
 
 
-      // dispatch(loginSuccess(formData));
+      dispatch(loginSuccess(data.token));
+      toast.success("Login successful");
       // dispatch(setUser(userData))
 
       // localStorage.setItem("user", JSON.stringify(userData));
       navigate("/");
     } catch (error) {
-      dispatch(loginFailure(error.message));
+      toast.error("Login failed: " +error.message);
+      
+      dispatch(loginFailure(error));
     }
   };
 
@@ -125,6 +166,20 @@ const Login = () => {
             </span>
           </p>
         </div>
+
+      {/* <div className="mt-4">
+  <h2>Products:</h2>
+  {loading ? (
+    <p>Loading...</p>
+  ) : (
+    <ul>
+      {products.map(product => (
+        <li key={product._id}>{product.name}</li>
+      ))}
+    </ul>
+  )}
+</div> */}
+
       </div>
     </>
   );

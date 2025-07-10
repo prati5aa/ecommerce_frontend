@@ -11,8 +11,7 @@ const ProductDetail = () => {
   return (
 
     <div>
-      <Header/>
-      <Nav/>
+      
 
       <HeroNav  name={pageName}/>
         
@@ -20,7 +19,7 @@ const ProductDetail = () => {
       <ShowPro/>
         <ProDesc/>
 
-        <Footer/>
+       
 
     </div>
   )

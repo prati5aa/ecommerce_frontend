@@ -23,7 +23,7 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isAuthenticated = true;
       state.error = null;
-      localStorage.setItem("user", JSON.stringify(action.payload));
+      localStorage.setItem("token", action.payload);
     },
 
     // Login failed

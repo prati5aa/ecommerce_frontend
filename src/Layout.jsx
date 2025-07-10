@@ -8,20 +8,20 @@ import Footer from './components/footer';
 import Navbar from './components/navbar';
 
 export const Layout = () => {
-  const { user, isAuthenticated } = useSelector(state => state.auth);
-  const dispatch = useDispatch();
+//   const { user, isAuthenticated } = useSelector(state => state.auth);
+//   const dispatch = useDispatch();
   
   // const handleLogout = () => {
   //   dispatch(logout());
   // };
-  useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      dispatch(setUser(JSON.parse(storedUser)));
-    }
-  }, [dispatch]);
+//   useEffect(() => {
+//     const storedUser = localStorage.getItem('user');
+//     if (storedUser) {
+//       dispatch(setUser(JSON.parse(storedUser)));
+//     }
+//   }, [dispatch]);
 
-  console.log(isAuthenticated,"is auth")
+//   console.log(isAuthenticated,"is auth")
   return (
     <div className="min-h-screen bg-gray-50">
 
