@@ -21,30 +21,6 @@ import { toast } from "react-toastify";
 const Login = () => {
 
 
-  const [products, setProducts] = useState([]); 
-
-const [loading, setLoading] = useState(true);
-
-// useEffect(() => {
-//   fetch('https://ecom-backend-4heh.onrender.com/api/v1/product')
-//     .then(res => res.json())
-//     .then(data => {
-//       console.log("Fetched products:", data);
-//       setProducts(data.productName); // or just setProducts(data) depending on your API shape
-//       setLoading(false);
-//     })
-//     .catch(err => {
-//       console.error("Error fetching products:", err);
-//       setLoading(false);
-//     });
-// }, []);
-
-
-
-
-
-
-
   const dispatch = useDispatch();
 
   const { isLoading, error } = useSelector((state) => state.auth);

@@ -40,6 +40,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.isLoading = false;
       state.error = null;
+      localStorage.clear()
     },
 
     setUser: (state, action) => {
