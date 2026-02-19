@@ -1,19 +1,13 @@
 import React, { useEffect } from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import api from '../../api';
 import { setUser } from '../../features/user/authSlice';
 
-// get token from local storage
-// user/me -fetchdata
-// store it in global store
-  const token= localStorage.getItem("token");
-  
 export const Protected = ({ children }) => {
-  const { user, isAuthenticated, isLoading } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-  
   const getMe = async () => {
     try {
       const res = await api.get('/user/me');
@@ -30,16 +24,16 @@ export const Protected = ({ children }) => {
       console.error("Error fetching user:", error);
     }
   }
+
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     getMe();
     if (storedUser) {
       dispatch(setUser(JSON.parse(storedUser)));
     }
-  }, []);
+  }, [dispatch]);
 
-//   const { isAuthenticated} = useSelector(state => state.auth);
-const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   
   if (isLoading) {

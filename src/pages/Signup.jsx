@@ -1,19 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router"
 import { toast } from "react-toastify"
 import { API_BASE_URL_FULL } from "../api"
 
 const Signup = () => {
-     const {
+  const [isLoading, setIsLoading] = useState(false);
+  const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm()
   const navigate = useNavigate()
 
   const onSubmit = async (data) => {
+    setIsLoading(true);
     try {
       const response = await fetch(`${API_BASE_URL_FULL}/user/signup`, {
         method: 'POST',
@@ -33,6 +34,8 @@ const Signup = () => {
       navigate("/login")
     } catch (error) {
       toast.error("Signup failed: " + error.message)
+    } finally {
+      setIsLoading(false);
     }
   }
   return (
@@ -43,11 +46,17 @@ const Signup = () => {
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col justify-center items-center  gap-4 w-full mt-[37px]'>
       
         <input className='border-[1px] border-[#C2C5E1] h-[52px] w-[432px]  rounded-[2px] placeholder:text-[16px] placeholder-[#9096B2] px-[13px]' type='text' {...register("username",{required:true, minLength:{value:3, message:"min length is 3"}})} placeholder="Username" />
-        <input className='border-[1px] border-[#C2C5E1] h-[52px] w-[432px]  rounded-[2px] placeholder:text-[16px] placeholder-[#9096B2] px-[13px]' type='text' {...register("email",{required:true, minLength:{value:3, message:"min length is 3"}})} placeholder="Email Address" />
-        <input className='border-[1px] border-[#C2C5E1] h-[52px] w-[432px]  rounded-[2px] placeholder:text-[16px] placeholder-[#9096B2] px-[13px]' type='number' {...register("contact",{required:true, minLength:{value:10, message:"min length is 10"}})} placeholder="Contact" />
+        {errors.username && <p className='text-sm text-red-600'>{errors.username.message}</p>}
+        <input className='border-[1px] border-[#C2C5E1] h-[52px] w-[432px]  rounded-[2px] placeholder:text-[16px] placeholder-[#9096B2] px-[13px]' type='email' {...register("email",{required:true, minLength:{value:3, message:"min length is 3"}})} placeholder="Email Address" />
+        {errors.email && <p className='text-sm text-red-600'>{errors.email.message}</p>}
+        <input className='border-[1px] border-[#C2C5E1] h-[52px] w-[432px]  rounded-[2px] placeholder:text-[16px] placeholder-[#9096B2] px-[13px]' type='tel' {...register("contact",{required:true, minLength:{value:10, message:"min length is 10"}})} placeholder="Contact" />
+        {errors.contact && <p className='text-sm text-red-600'>{errors.contact.message}</p>}
         <input className='border-[1px] border-[#C2C5E1] h-[52px] w-[432px] rounded-[2px] placeholder:text-[16px] placeholder-[#9096B2] px-[13px]' type='password' {...register("password",{required:true, minLength:{value:8, message:"min length is 8"}})} placeholder="Password" />
+        {errors.password && <p className='text-sm text-red-600'>{errors.password.message}</p>}
         <p className='text-sm text-left w-full px-[56px] text-[#9096B2] '>Forgot your password?</p>
-        <input className='border border-[#C2C5E1] bg-[#FB2E86] h-[47px] w-[432px] rounded-[3px] text-white hover:bg-pink-600' type='submit' value="Sign up"/>
+        <button className='border border-[#C2C5E1] bg-[#FB2E86] h-[47px] w-[432px] rounded-[3px] text-white hover:bg-pink-600 disabled:opacity-50' type='submit' disabled={isLoading}>
+          {isLoading ? "Signing up..." : "Sign up"}
+        </button>
       
         </form>
       

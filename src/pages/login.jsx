@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -6,37 +6,23 @@ import {
   loginFailure,
   loginStart,
   loginSuccess,
-  setUser,
 } from "../features/user/authSlice";
 import { toast } from "react-toastify";
 import { API_BASE_URL_FULL } from "../api";
-// import { Counter } from './components/Counter'
-
-
-
-// Inside your component
-
-
-
 
 const Login = () => {
-
-
   const dispatch = useDispatch();
-
-  const { isLoading, error } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async (formData) => {
     dispatch(loginStart());
-    console.log("started");
 
     try {
       const response = await fetch(`${API_BASE_URL_FULL}/user/login`, {
@@ -48,30 +34,16 @@ const Login = () => {
       });
 
       if (!response.ok) {
-        const errmsg= await response.json();
+        const errmsg = await response.json();
         throw new Error(errmsg.message || "Login failed");
-
       }
 
       const data = await response.json();
-      console.log("Login successful:", data);
-
-
-
-      // store token in local storage
-      console.log(data)
-
-
-
       dispatch(loginSuccess(data.token));
       toast.success("Login successful");
-      // dispatch(setUser(userData))
-
-      // localStorage.setItem("user", JSON.stringify(userData));
       navigate("/");
     } catch (error) {
-      toast.error("Login failed: " +error.message);
-      
+      toast.error("Login failed: " + error.message);
       dispatch(loginFailure(error));
     }
   };
@@ -85,7 +57,6 @@ const Login = () => {
             Please log in using account details below.
           </p>
 
-          {/* form */}
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col justify-center items-center  gap-4 w-full mt-[37px]"
@@ -100,7 +71,7 @@ const Login = () => {
                 })}
                 placeholder="Email Address"
               />
-              {errors.name && (
+              {errors.email && (
                 <p className="mt-1 text-sm text-red-600">
                   {errors.email.message}
                 </p>
@@ -116,7 +87,7 @@ const Login = () => {
                 })}
                 placeholder="Password"
               />  
-              {errors.name && (
+              {errors.password && (
                 <p className="mt-1 text-sm text-red-600">
                   {errors.password.message}
                 </p>
@@ -126,37 +97,21 @@ const Login = () => {
             <p className="text-sm text-left w-full px-[56px] text-[#9096B2] ">
               Forgot your password?
             </p>
-          <button   className="border border-[#C2C5E1] bg-[#FB2E86] h-[47px] w-[432px] rounded-[3px] text-white hover:bg-pink-600"
-              type="submit">
-                Log In
-
-          </button>
-            
-            
+            <button 
+              className="border border-[#C2C5E1] bg-[#FB2E86] h-[47px] w-[432px] rounded-[3px] text-white hover:bg-pink-600 disabled:opacity-50"
+              type="submit"
+              disabled={isLoading}
+            >
+              {isLoading ? "Logging in..." : "Log In"}
+            </button>
           </form>
           <p className="text-sm mt-4 text-[#9096B2]">
-            {" "}
             Don't have an Account?{" "}
             <span className="text-[#FB2E86]">
-              {" "}
-              <a href="/signup">Create account</a>
+              <a href="/signup" className="hover:underline">Create account</a>
             </span>
           </p>
         </div>
-
-      {/* <div className="mt-4">
-  <h2>Products:</h2>
-  {loading ? (
-    <p>Loading...</p>
-  ) : (
-    <ul>
-      {products.map(product => (
-        <li key={product._id}>{product.name}</li>
-      ))}
-    </ul>
-  )}
-</div> */}
-
       </div>
     </>
   );

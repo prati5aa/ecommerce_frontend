@@ -1,10 +1,10 @@
 // components/Layout.jsx
 
-import { Outlet, Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
-import Header from "./components/header";
-import Footer from "./components/footer";
-import Navbar from "./components/navbar";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import Navbar from "../components/navbar";
 
 
 export const Layout = () => {

@@ -60,10 +60,16 @@ const fetchBestSellers = async () => {
   try {
     const response = await fetch(`${API_BASE_URL_FULL}/product`);
     const data = await response.json();
-    console.log("BEST SELLER RESPONSE:", data); // ← CHECK THIS
+    console.log("BEST SELLER RESPONSE:", data);
 
-    // Safe: fallback to empty array if undefined
-    setLatestProducts(Array.isArray(data.products) ? data.productName : []);
+    // Handle different response structures
+    if (data.products && Array.isArray(data.products)) {
+      setLatestProducts(data.products);
+    } else if (Array.isArray(data)) {
+      setLatestProducts(data);
+    } else {
+      setLatestProducts([]);
+    }
   } catch (error) {
     console.error("API error:", error);
     setLatestProducts([]); // prevent app crash
@@ -127,9 +133,9 @@ const fetchBestSellers = async () => {
           {latestProducts.map((product, index) => (
             <Latest
               key={index}
-              name={product.productName}
+              name={product.productName || product.name}
               price={product.price}
-              img={product.image}
+              img={product.image || product.img}
             />
           ))}
         </div>
