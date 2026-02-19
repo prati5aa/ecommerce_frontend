@@ -9,6 +9,7 @@ import {
   setUser,
 } from "../features/user/authSlice";
 import { toast } from "react-toastify";
+import { API_BASE_URL_FULL } from "../api";
 // import { Counter } from './components/Counter'
 
 
@@ -38,7 +39,7 @@ const Login = () => {
     console.log("started");
 
     try {
-      const response = await fetch('https://ecom-backend-4heh.onrender.com/api/v1/user/login', {
+      const response = await fetch(`${API_BASE_URL_FULL}/user/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

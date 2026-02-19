@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
+import api from '../../api';
 import { setUser } from '../../features/user/authSlice';
 
 // get token from local storage
@@ -15,23 +15,21 @@ export const Protected = ({ children }) => {
 
   
   const getMe = async () => {
-    const res= await axios.get(
-      "https://ecom-backend-4heh.onrender.com/api/v1/user/me",{
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        console.log(res, "responseeeeee");
+    try {
+      const res = await api.get('/user/me');
+      console.log(res, "responseeeeee");
 
-        const data=res.data;
-        console.log(data, "dataaaaaaa");
-        if (data) {
-          dispatch(setUser(data));
-          
-        } else {
-          console.log("No user data found");
-        }
+      const data = res.data;
+      console.log(data, "dataaaaaaa");
+      if (data) {
+        dispatch(setUser(data));
+      } else {
+        console.log("No user data found");
+      }
+    } catch (error) {
+      console.error("Error fetching user:", error);
     }
+  }
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     getMe();

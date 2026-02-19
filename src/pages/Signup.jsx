@@ -1,5 +1,8 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router"
+import { toast } from "react-toastify"
+import { API_BASE_URL_FULL } from "../api"
 
 const Signup = () => {
      const {
@@ -8,7 +11,30 @@ const Signup = () => {
     watch,
     formState: { errors },
   } = useForm()
-  const onSubmit = (data) => console.log(data)
+  const navigate = useNavigate()
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch(`${API_BASE_URL_FULL}/user/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (!response.ok) {
+        const errmsg = await response.json()
+        throw new Error(errmsg.message || "Signup failed")
+      }
+
+      const result = await response.json()
+      toast.success("Signup successful! Please login.")
+      navigate("/login")
+    } catch (error) {
+      toast.error("Signup failed: " + error.message)
+    }
+  }
   return (
     <div className='flex flex-col justify-center items-center h-screen'>
       <div className='flex flex-col justify-center items-center bg-[#FFFFFF] shadow-[0_0_60px_10px_rgba(0,0,0,0.03)]  w-[533px] h-[474px]'>

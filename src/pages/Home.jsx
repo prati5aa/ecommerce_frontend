@@ -9,6 +9,7 @@ import Trending from '../components/Trending.jsx';
 import Discount from '../components/Discount.jsx';
 import TopCategory from '../components/topCategory.jsx';
 import Newsletter from '../components/Newsletter.jsx';
+import { API_BASE_URL_FULL } from '../api';
 
 function Home() {
   const [activeIndex, setActiveIndex] = useState(1);
@@ -57,7 +58,7 @@ function Home() {
 
 const fetchBestSellers = async () => {
   try {
-    const response = await fetch('https://ecom-backend-4heh.onrender.com/api/v1/product');
+    const response = await fetch(`${API_BASE_URL_FULL}/product`);
     const data = await response.json();
     console.log("BEST SELLER RESPONSE:", data); // ← CHECK THIS
 
