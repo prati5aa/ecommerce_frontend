@@ -7,7 +7,7 @@ import Offer from '../components/Offer.jsx';
 import Unique from '../components/Unique.jsx';
 import Trending from '../components/Trending.jsx';
 import Discount from '../components/Discount.jsx';
-import TopCategory from '../components/topCategory.jsx';
+import TopCategory from '../components/TopCategory.jsx';
 import Newsletter from '../components/Newsletter.jsx';
 import { API_BASE_URL_FULL } from '../api';
 
