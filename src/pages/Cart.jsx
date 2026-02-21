@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Breadcrumbs from '../components/Resuable/Breadcrumb'
-import HeroNav from '../components/Resuable/HeroNav'
-import Footer from '../components/footer'
 import api from '../api'
 import { toast } from 'react-toastify'
 import { FiTrash2, FiPlus, FiMinus } from 'react-icons/fi'
@@ -135,7 +133,7 @@ const Cart = () => {
   return (
     <div>
       <Breadcrumbs />
-      <HeroNav name="Shopping Cart" />
+     
       
       <div className="w-full bg-white py-16">
         <div className="max-w-6xl mx-auto px-4">
@@ -278,8 +276,7 @@ const Cart = () => {
           )}
         </div>
       </div>
-      
-      <Footer />
+ 
     </div>
   )
 }
