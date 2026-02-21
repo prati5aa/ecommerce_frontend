@@ -2,7 +2,7 @@ import React from 'react'
 import { CiHeart, CiShoppingCart } from 'react-icons/ci'
 import { LiaSearchPlusSolid } from 'react-icons/lia'
 
-function latest({name,price,img}) {
+function Latest({name,price,img}) {
   return (
    
       <div className='flex flex-col gap-[4px]   w-[280px]   hover:shadow-xl group relative'>
@@ -32,4 +32,4 @@ function latest({name,price,img}) {
   )
 }
 
-export default latest
+export default Latest

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../features/user/authSlice";
 import { useNavigate } from "react-router";
 
-function footer() {
+function Footer() {
   const dispatch= useDispatch()
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -78,4 +78,4 @@ function footer() {
   );
 }
 
-export default footer;
+export default Footer;

@@ -9,6 +9,8 @@ import Shopping from "../pages/ShopGrid";
 import Products from "../components/cards/ProductCard";
 import ProductDetails from "../pages/ProductDetail";
 import Signup from "../pages/Signup";
+import About from "../pages/About";
+import Cart from "../pages/Cart";
 
 export const router = createBrowserRouter([
   {
@@ -23,35 +25,38 @@ export const router = createBrowserRouter([
       },
       {
         path:"products",
-        // index: true,
         element: (
             <Products />
         ),
       },
-
-
       {
         path: "dashboard",
         element: (
-        
             <Shopping />
-          
         ),
       },
       {
         path: "shop",
         element: (
-        
             <Shopping />
-          
         ),
       },
       {
-        path: "product/",
+        path: "product/:id",
         element: (
-          
             <ProductDetails/>
-          
+        ),
+      },
+      {
+        path: "about",
+        element: (
+            <About />
+        ),
+      },
+      {
+        path: "cart",
+        element: (
+            <Cart />
         ),
       },
     ],

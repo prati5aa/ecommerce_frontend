@@ -16,7 +16,7 @@ function Breadcrumbs() {
           const isLast = index === pathnames.length - 1;
 
           return (
-            <>
+            <React.Fragment key={`breadcrumb-${index}`}>
               <li><span className="mx-1">.</span></li>
               <li>
                 {isLast ? (
@@ -25,7 +25,7 @@ function Breadcrumbs() {
                   <Link to={to} className="text-[#101750] hover:underline capitalize">{value}</Link>
                 )}
               </li>
-            </>
+            </React.Fragment>
           );
         })}
       </ol>

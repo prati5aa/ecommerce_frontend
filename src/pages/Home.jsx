@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Latest from '../components/home.latest.jsx';
+import Latest from '../components/Home.latest.jsx';
 import Cards from '../components/Cards.jsx';
 import Hero from '../components/Hero.jsx';
-import Footer from '../components/footer.jsx';
+import Footer from '../components/Footer.jsx';
 import Offer from '../components/Offer.jsx';
 import Unique from '../components/Unique.jsx';
 import Trending from '../components/Trending.jsx';
@@ -10,6 +10,7 @@ import Discount from '../components/Discount.jsx';
 import TopCategory from '../components/TopCategory.jsx';
 import Newsletter from '../components/Newsletter.jsx';
 import { API_BASE_URL_FULL } from '../api';
+import WelcomeModal from '../components/Resuable/WelcomeModal';
 
 function Home() {
   const [activeIndex, setActiveIndex] = useState(1);
@@ -97,6 +98,7 @@ const fetchBestSellers = async () => {
 
   return (
     <div>
+      <WelcomeModal />
       <Hero />
 
       <div className='flex justify-center mt-20 mb-20 items-center bg-[white] w-full h-[361px] gap-5'>
