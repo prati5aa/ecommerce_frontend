@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Latest from '../components/Home.latest.jsx';
+import Latest from '../components/Latest.jsx';
 import Cards from '../components/Cards.jsx';
 import Hero from '../components/Hero.jsx';
 import Footer from '../components/Footer.jsx';
